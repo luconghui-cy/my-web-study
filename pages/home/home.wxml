@@ -1,0 +1,8 @@
+<!--pages/home/home.wxml-->
+<view class="home-container">
+  <view class="home-item" wx:for="{{ list }}" wx:key="id" style="background-color : {{ item.bg }}" 
+    data-url = "{{ item.url }}"
+    catchtap="navigateHandler">
+    <text>{{ item.text }} </text>
+  </view>
+</view>

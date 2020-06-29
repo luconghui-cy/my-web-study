@@ -1,0 +1,174 @@
+<!--pages/demos/demos.wxml-->
+<view class="container">
+  <!-- section one -->
+  <view class="v-section">
+    <view class="v-title">
+      <text>微信小程序</text>
+    </view>
+    <view class="v-content">
+      <text>应用程序实例app、页面pages和工具utils</text>
+      <text>每个页面包括4种文件 : wxml wxss js json </text> 
+      <text>json格式的6中数据格式：数字、字符串、Bool值、数组、对象、Null，json文件无法使用注释，忘记给key值加双引号或写成单引号是常见的错误。</text>
+      <text>json文件不能为空，至少是一个 {} </text>
+      <view>
+        <text class="v-subtitle">app.json全部配置：</text>
+        <text>pages : 页面路径列表，是字符串数组，不需要写扩展名
+          window : 全局默认窗口
+          tabBar : 底部tab栏
+          networkTimeout: 网络超时时间
+          debug: 是否开启调试模式，默认关闭
+        </text>
+      </view>
+      <text>WXSS的样式优先级与CSS类似 
+      !important - style - #id - .class - element </text>
+      <text>小程序js ECMAScript + 小程序框架 + 小程序API
+        浏览器js ECMAScript + DOM + BOM
+        NodeJSjs ECMAScript + NPM + Native
+      </text>
+      <text>同浏览器不同，小程序中可以将任何一个JavaScript 文件作为一个模块，通过module.exports 对外暴露接口。小程序的执行的入口文件是 app.js 。并且会根据其中require的模块顺序决定文件的运行顺序同浏览器中运行的脚本文件有所不同，小程序的脚本的作用域同 NodeJS 更为相似。在文件中声明的变量和函数只在该文件中有效，不同的文件中可以声明相同名字的变量和函数，不会互相影响当需要使用全局变量的时，通过使用全局函数 getApp() 获取全局的实例，并设置相关属性值，来达到设置全局变量的目的</text>
+      
+      <view>
+        <text class="v-subtitle">小程序中的js与web开发的js的区别</text>
+        <text>小程序并不运行在浏览器中，所以并没有 BOM DOM对象 即没有 window 和 document对象</text>
+        <text>小程序的 js 有些额外的全局成员
+          App()定义应用程序实例
+          Page()定义页面对象
+          getApp()获取应用程序实例
+          getCurrentPages() 获取当前页面的调用栈(返回一个数组，数组最后一项就是当前页面)
+          wx 用来提供核心API
+        </text>
+        <text>小程序中，模块的导入支持 module.exports = {} ；</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">界面 - 数据绑定</text>
+        <text>WXML 中的动态数据均来自对应 Page 的 data。data就是界面和逻辑的桥梁</text>
+        <text>数据绑定可以作用在:
+         内容
+         标签的属性 需要在双引号内 （通过数据绑定动态修改标签的属性 如 class）
+         控制属性 
+        </text>
+        <text>还需要注意，没有被定义的变量的或者是被设置为 undefined 的变量不会被同步到 wxml 中</text>
+        <text>wx:if 是根据布尔值来决定是否显示（动态创建）。</text>
+        <text>特别注意checkbox：不要直接写 checked="false"，其计算结果是一个字符串， 转成 boolean 类型后代表真值,即checkbox被选中。 应该 checked = "{{false}}"</text>
+        <text>在组件上使用 wx:for 控制属性绑定一个数组，即可使用数组中各项的数据重复渲染该组件。默认数组的当前项的下标变量名默认为 index，数组当前项的变量名默认为 item如果在data中有 item 或 index 这样的属性，为了避免冲突，可以用wx:for-item 重新定义item!!index也类似</text>
+        <text>wx:for 也可以嵌套</text>
+        <text>类似 block wx:if，也可以将 wx:for 用在block标签上，以渲染一个包含多节点的结构块</text>
+        <text>当 wx:for 的值为字符串时，会将字符串解析成字符串数组</text>
+        <text>block --- 只是控制属性的载体，在页面实际渲染中没有实际意义,即渲染中不存在的！！！起到一个整体控制的功能。</text>
+        <text>wx:if 与 hidden 区别，hidden 标签仍然工作，只是控制显示与隐藏。而 wx:if 是惰性的，条件为假元素不存在。从速度上，hidden更快，但是页面损耗更大。</text>
+        <text>获取列表的某项数据：var item = this.data.todos[e.currentTarget.dataset.xxxxx];需要在item上设置 data-xxxxx </text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">界面层 事件处理</text>
+        <text>事件名称 bindtap = "bindtapHandle" 命名规则是 bind + 一个事件名 类似web开发 on + 事件名</text>
+        <text>小程序的事件冒泡与web一样，阻止事件冒泡 catchtap(绑定事件处理并阻止冒泡) 即 catch + 事件名 就可以阻止冒泡了</text>
+        <text>事件传参 ： 在是元素中使用 data-xxxx 来定义数据，在事件参数 e.target.dataset 获取 这些数据。多个中划线的解析：data-hello-world = "xxx" 在解析是 helloWorld</text>
+        <text>事件处理函数中的 this 是页面对象，而不是 触发事件的元素，这个和web开发不一样！</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">常用事件</text>
+        <text>bindtap 、 catchtap</text>
+        <text>bindconfirm 文本输入点击完成或回车触发</text>
+        <text>bindinput 文本框输入触发</text>
+        <text>表单事件 bindsubmit 、bindreset</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">单向数据流 使用 setData( ) 通知更新界面</text>
+        <text>小程序没有双向数据流机制，所有数据流都是 【单向】 【一次的】 的。通过事件处理实现数据的同步。在事件处理中使用 setData方法！！来实现同步setData(对象)可以通知界面做出变化，而直接赋值没有办法通知界面（尽管数据已经改变。）</text>
+        <text>bindinput事件 e.detail.value 获取输入的文本</text>
+        
+      </view>
+
+      <view>
+        <text class="v-subtitle">界面层 wxss</text>
+        <text>对比web开发的CSS , wxss主要的扩充和更改是： 尺寸单位 rpx （responsize pixel） (只能在小程序中使用)</text>
+        <text>在PC端，1px对应一个物理像素，但是在移动端十分精细，1px对应的是多个物理像素！！！！比如：iphone6 水平750物理像素，我们设置375px就占满了!!!</text>
+        <text>虽然可以用 100% 来占满整个屏幕，但是如果布局多层嵌套，里层元素的宽度设置很麻烦，必须将100%一层一层传递下去。</text>
+        <text>在小程序中，所有的设备的水平都统一 750 rpx ，因此不同设备的1px 对应的 rpx 是不相等的。在小程序中，所有设备的水平也可以使用 20rem ，即 20rem == 750rpx ,rem可以使用小数</text>
+        <text>rpx 目的是为了让我们在不同的设备之间使用相同的一套代码！！！</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">小程序 UI(user interface)</text>
+        <text>wxml 是遵循 XML 语言，必须有闭合标签(无论是单标签和双标签)</text>
+        <text>icon : [type] [size] [color]</text>
+        <text>text (类似于 html 的 P 标签，不能嵌套。) ,不同于p标签的是text可以嵌套以及换行通过文本来控制！！！</text>
+        <text>progress 单标签 [percent] [show-info] [stroke-width] [color] [active]</text>
+        <text>小程序表单的提交按钮 form-type = "submit" , 这个form-type 类似web的按钮的 type属性。</text>
+        <text>input 组件的属性：[placeholder] [placeholder-class]</text>
+        <text>按钮button:
+        [type 控制按钮的类型 只有三种 primary default warn] 
+        [size] 
+        [plain] 
+        [form-type = submit reset] 
+        [disabled] 
+        [hover-class]</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">操作反馈</text>
+        <text>wx.showToast(Object object) 显示消息提示框</text>
+        <text>wx.showModal(Object object) 显示模态框</text>
+        <text>wx.showLoading(Object object) 显示 loading 提示框。需主动调用 wx.hideLoading 才能关闭提示框</text>
+        <text>wx.showActionSheet(Object object) 显示操作菜单</text>
+        <text>wx.hideToast(Object object) 隐藏消息提示框</text>
+        <text>wx.hideLoading(Object object) 隐藏 loading 提示框</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">布局 flex</text>
+        <text>flex-direction : 调整主轴方向 默认水平</text>
+        <text>justify-content : 调整主轴方向的对齐</text>
+        <text>align-items : 调整侧轴方向的对齐</text>
+        <text>flex-wrap : 控制是否换行</text>
+        <text>align-content : 堆栈对齐（由flex-wrap产生的独立行）</text>
+        <text>order : 控制子项目的排序方式</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">页面跳转</text>
+        <text>组件 navigator  属性 url为相对路径</text>
+        <text>传值时使用 url 类似web传参：xxxxx?name=小明&age=18</text>
+        <text>接收使用 onload事件（加载完成）的参数 options 对象。</text>
+        <text>导航模式 ： redirect，没有访问历史，不能返回上一页面</text>
+        <text>点击高亮 : hover-class = "类样式名称" , 对于其他元素点击高亮，可以通过设置class="类名" 在样式中设置 cursor : pointer 即可 </text>
+        <text>使用代码导航 调用微信接口： wx.navigateTo() 或 wx.redirectTo() redirect不产生访问历史 相当于 navigator + redirect模式; 传参的方式同样在url后 + xxxx?name=liping&age=10wx.navigatrBack() 默认是返回上一页。如果要返回指定的某一页，可以设置 delta 的值（向上返回几层。）当delta过大，超出历史记录，默认返回最开始的页面</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">iconfont</text>
+        <text>1 在小程序中创建文件 iconfont.wxss</text>
+        <text>2 登录iconfont下载项目，复制iconfont.css的内容到上面创建的 iconfont.wxss中。</text>
+        <text>3 生成代码 并复制替换iconfont.wxss中的@font-face</text>
+        <text>1 登录iconfont下载项目，并生成代码(Unicode)复制替换下载的文件iconfont.css中的@font-face中的内容</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">模板</text>
+        <text>WXML提供模板（template），可以在模板中定义代码片段，然后在不同的地方调用。使用 name 属性，作为模板的名字。然后在 template 内定义代码片段</text>
+        <text>使用 is 属性，声明需要的使用的模板，然后将模板所需要的 data 传入</text>
+      </view>
+
+      <view>
+        <text class="v-subtitle">共同属性</text>
+        <text>id</text>
+        <text>class</text>
+        <text>style</text>
+        <text>hidden 组件是否显示</text>
+        <text>data-* 自定义属性</text>
+        <text>bind* | catch* 事件</text>
+      </view>
+
+      <!-- exmaple start -->
+      <view>
+        <text class="v-subtitle">subtitle</text>
+        <text>content</text>
+      </view>
+      <!-- exmaple end -->
+    </view>
+  </view>
+</view>

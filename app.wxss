@@ -1,0 +1,39 @@
+/**app.wxss**/
+
+.container{
+  background-color: #ccc;
+  height: 100%;
+}
+.v-section{
+  margin-bottom: 20rpx;
+  background-color: white;
+}
+.v-section .v-title{
+  padding: 20rpx;
+  border-bottom: 1rpx solid #ccc;
+}
+.v-title text{
+  font-size: 50rpx;
+  font-weight: bold;
+}
+
+.v-content{
+  padding: 0rpx 5rpx;
+}
+
+.v-content text{
+  padding: 20rpx;
+  color: #333;
+  font-size: 30rpx;
+  display: block;
+  margin: 0rpx 0rpx;
+  line-height: 45rpx;
+  border-bottom: 1rpx dashed #ddd;
+  text-align: justify;
+}
+
+.v-content .v-subtitle{
+  font-weight: bold;
+  border-bottom: none;
+  font-size: 36rpx;
+}

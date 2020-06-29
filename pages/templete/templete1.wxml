@@ -1,0 +1,5 @@
+<template name="temp1">
+  <view style="background-color:#eff; display:flex;">
+    <button style="margin:10rpx; flex:1;" type="primary">{{text}} {{author}}</button>
+  </view>
+</template>

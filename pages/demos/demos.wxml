@@ -1,0 +1,34 @@
+<!-- 引入外部文件 -->
+<import src = "../templete/templete1.wxml" />
+
+<view class="container">
+  <view class="v-section">
+    <view class="v-title">
+      <text>示例</text>
+    </view>
+    <view class="v-content">
+      <view>
+        <text class="v-subtitle">wx:for 示例</text>
+        <view wx:for="{{ list }}" wx:key="id">
+          <text>{{ index }} {{ item.id }} {{ item.text }} {{ item.author }}</text>
+        </view>
+      </view>
+
+      <view>
+        <text class="v-subtitle">templete 示例</text>
+        <view wx:for="{{ list }}" wx:key="id"> 
+          <template is="temp1" data="{{ ...item }}"></template>
+        </view>
+        
+      </view>
+
+
+      <!--  example start -->
+      <view>
+        <text class="v-subtitle">title</text>
+        <text>content...</text>
+      </view>
+      <!--  example end -->
+    </view>
+  </view>
+</view>

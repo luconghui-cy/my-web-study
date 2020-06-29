@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/index/index",
+    "pages/demos/demos",
+    "pages/project/project",
+    "pages/html/html",
+    "pages/css/css",
+    "pages/javascript/javascript",
+    "pages/jquery/jquery",
+    "pages/ajax/ajax",
+    "pages/git/git",
+    "pages/nodejs/nodejs",
+    "pages/vue/vue",
+    "pages/react/react",
+    "pages/webpack/webpack",
+    "pages/python/python",
+    "pages/exam/exam"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#333",
+    "navigationBarTitleText": "小程序学习",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "list": [{
+      "pagePath": "pages/home/home",
+      "text": "前端"
+    },{
+      "pagePath": "pages/index/index",
+      "text": "小程序"
+    },{
+      "pagePath" : "pages/demos/demos",
+      "text" : "示例"
+    },{
+      "pagePath" : "pages/project/project",
+      "text" : "项目"
+    }],
+    "color" : "#555",
+    "selectedColor" : "green"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

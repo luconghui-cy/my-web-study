@@ -1,0 +1,23 @@
+/* pages/home/home.wxss */
+Page{
+  background-color: #555;
+}
+
+.home-container{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.home-item{
+  width: 250rpx;
+  height: 250rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.home-item text{
+  font-size: 40rpx;
+  color: #333;
+}
