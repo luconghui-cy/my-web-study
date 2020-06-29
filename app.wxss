@@ -37,3 +37,8 @@
   border-bottom: none;
   font-size: 36rpx;
 }
+
+.v-content image{
+  width: 100%;
+  
+}
