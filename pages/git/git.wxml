@@ -19,6 +19,82 @@
         <text>安装完成后，打开任意目录，右键查看是否有 Git GUI Here 和 Git Bash Here，如果存在，表明安装成功。</text>
       </view>
 
+      <!--git 安装-->
+      <view>
+        <text class="v-subtitle">初始化Git仓库</text>
+        <text>这个仓库会存放，git对我们项目代码进行备份的文件</text>
+        <text>在项目目录右键打开 git bash 命令窗口，输入 git init</text>
+      </view>
+
+       <!--git 配置用户名-->
+      <view>
+        <text class="v-subtitle">配置用户名</text>
+        <text>就是在git中设置当前使用的用户是谁</text>
+        <text>每一次备份都会把当前备份者的信息存储起来</text>
+        <text>git config --global user.name "xiaoming"</text>
+        <text>配置邮箱（不必是真实邮箱）： git config --global user.email "xm@sina.com"</text>
+      </view>
+
+      <!--  把代码存储到.git仓储中 -->
+      <view>
+        <text class="v-subtitle">把代码存储到.git仓储中</text>
+        <text>工作区（不包括 .git）; 大门口（暂存区）; 仓库房间（版本库）</text>
+        <text>1.把代码放到仓储的门口</text>
+        <text>`git add ./readme.md` 所指定的文件放到大门口</text>
+        <text>`git add ./` 把所有的修改的文件添加到大门口</text>
+        <text>2.把仓储门口的代码放到里面的房间中去</text>
+        <text>`git commit -m "这是对这次添加的东西的说明" `</text>
+        <text>可以一次性把我们修改的代码放到房间里(版本库) `git commit --all -m "一些说明"` , --all 表示是把所有修改的文件提交到版本库</text>
+      </view>
+
+      <!--  查看状态 -->
+      <view>
+        <text class="v-subtitle">查看当前的状态</text>
+        <text>查看当前代码有没有被放到仓储中去 , `git status`</text>
+      </view>
+
+      <!--  查看日志 -->
+      <view>
+        <text class="v-subtitle">查看日志</text>
+        <text>`git log` 查看历史提交的日志</text>
+        <text>`git log --oneline` 可以看到简洁版的日志</text>
+      </view>
+
+       <!--  回退指定的版本 -->
+      <view>
+        <text class="v-subtitle">回退到指定的版本</text>
+        <text>`git reset --hard Head~0` 表示回退到上一次代码提交时的状态</text>
+        <text>`git reset --hard Head~1` 表示回退到上上次代码提交时的状态</text>
+        <text>`git reset --hard 版本号` 可以通过版本号精确的回退到某一次提交时的状态</text>
+        <text>`git reflog` 可以看到每一次切换版本的记录:可以看到所有提交的版本号</text>
+      </view>
+
+
+      <!--  分支 -->
+      <view>
+        <text class="v-subtitle">分支</text>
+        <text>查看当前有哪些分支 `git branch`</text>
+        <text>创建分支 git branch 分支名 ， 如 git branch dev , 在刚创建时dev分支里的东西和master分支里的东西是一样的</text>
+        <text>切换到指定的分支dev,git checkout dev </text>
+        <text>合并分支：`git merge dev` 合并分支内容,把当前分支与指定的分支(dev),进行合并 ， 当前分支指的是`git branch`命令输出的前面有*号的分支 , 合并时如果有冲突，需要手动去处理，处理后还需要再提交一次</text>
+        <text>删除分支 ： `git branch -d dev` 删除分支不能是当前的分支。</text>
+      </view>
+
+      <!--  GitHub -->
+      <view>
+        <text class="v-subtitle">GitHub</text>
+        <text>https://github.com</text>
+        <text>不是git,只是一个网站 , 只不过这个网站提供了允许别通过git上传代码的功能</text>
+        <text>提交代码到github(当作git服务器来用)</text>
+        <text>`git push [地址] master`</text>
+        <text>`git push https://github.com/huoqishi/test112.git master  master` , 
+        会把当前分支的内容上传到远程的master分支上</text>
+        <text>`git pull [地址] master`</text>
+        <text>`git pull https://github.com/huoqishi/test112.git master` , 
+        会把远程分支的数据得到:(*注意本地-要初始一个仓储!*)</text>
+        <text>`git clone [地址]` , 会得到远程仓储相同的数据,如果多次执行会覆盖本地内容。</text>
+      </view>
+
       <!--  example start -->
       <view>
         <text class="v-subtitle">title</text>
