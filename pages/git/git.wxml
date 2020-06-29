@@ -87,13 +87,22 @@
         <text>不是git,只是一个网站 , 只不过这个网站提供了允许别通过git上传代码的功能</text>
         <text>提交代码到github(当作git服务器来用)</text>
         <text>`git push [地址] master`</text>
-        <text>`git push https://github.com/huoqishi/test112.git master  master` , 
+        <text>`git push https://github.com/huoqishi/test112.git  master` , 
         会把当前分支的内容上传到远程的master分支上</text>
         <text>`git pull [地址] master`</text>
         <text>`git pull https://github.com/huoqishi/test112.git master` , 
         会把远程分支的数据得到:(*注意本地-要初始一个仓储!*)</text>
-        <text>`git clone [地址]` , 会得到远程仓储相同的数据,如果多次执行会覆盖本地内容。</text>
+        <text>`git clone [地址]` , 会得到远程仓储相同的数据,如果多次执行会覆盖本地内容。一般第一次会使用这个命令，包括仓库名</text>
+        <text>第一次下载项目使用 clone ， 以后每次更新使用 pull.</text>
       </view>
+
+      <!--  ssh方式上传代码 -->
+      <view>
+        <text class="v-subtitle">ssh方式上传代码(不必输入用户名和密码)</text>
+        <text>生成公钥,和私钥 , 在任意的目录下打开 git bash 命令窗口输入 ：`ssh-keygen -t rsa -C "xiaoming@sina.com"`</text>
+        <text>公钥:C:\Users\LuConghui\.ssh\id_rsa.pub , 前往github网站配置 ssh 公钥。</text>
+      </view>
+
 
       <!--  example start -->
       <view>
