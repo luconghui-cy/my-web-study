@@ -1,2 +1,148 @@
-<!--pages/nodejs/nodejs.wxml-->
-<text>pages/nodejs/nodejs.wxml</text>
+<view class="container">
+  <view class="v-section">
+    <view class="v-title">
+      <text>Nodejs</text>
+    </view>
+    <view class="v-content">
+      <!--  Nodejs全局变量 -->
+      <view>
+        <text class="v-subtitle">Nodejs 全局变量</text>
+        <text>类似游览器的 window , nodejs 的全局对象是 global </text>
+        <text>__filename 包含文件名的全路径, 
+        __dirname 不包含文件的全路径, 
+        setTimeout 定时函数, 
+        clearTimeout 清除定时器, 
+        process , 
+        process.argv 是一个数组 第一个参数是node安装环境的全路径 第二个参数是当前js文件的全路径 从第三个参数是函数参数..., 
+        process.arch 当前系统的架构</text>
+      </view>
+
+      <!--  模块化开发 -->
+      <view>
+        <text class="v-subtitle">模块化开发</text>
+        <text>作用：避免变量名冲突 文件依赖</text>
+        <text>前端标准的模块规范(异步 从服务器到终端)
+                1 AMD - requirejs 国外
+                2 CMD - seajs 阿里巴巴</text>
+        <text>服务器的模块化规范（同步 从硬盘到内存）
+                1 CommonJS - Node.js</text>
+        <text>模块化的相关规则
+              1 如何定义模块 一个js文件就是一个模块，模块内部的成员都是相互独立的
+              2 模块成员的导出和引入
+        </text>
+        <text>模块的导出 
+              * exports.xxxx = sum;
+              * moudle.exports = {f1:xxxx , f2 ：xxxxx , .....}
+              * 此外 模块的导出还有一种不常用的方法 global.xxxx = flag; 利用global全局变量。</text> 
+        <text>模块的引入 
+            * var m = require(相对路径);  已经加载的模块文件会被缓存。
+            * 另外 .js 结尾的文件可以省略后缀。
+            * 一般的模块文件有三类文件 js json(数据) node（编译的二进制文件） 
+            * 如果这三类文件同名，优先加载 js 其次 json 最后 node 文件。</text>
+        <text> 调用模块 m 的 方法
+            * m.f1()   m.f2() </text>
+      </view>
+
+       <!--  模块的分类 -->
+      <view>
+        <text class="v-subtitle">模块的分类</text>
+        <text>1.自定义模块</text>
+        <text>2 系统核心模块
+              *    fs 文件操作   require('fs');
+              *    http 网络操作 require('http');
+              *    path 路径操作
+              *    url 解析
+              *    querystring 查询参数解析
+              *    .........</text>
+      </view>
+
+       <!--  es6的常见语法 -->
+      <view>
+        <text class="v-subtitle">es6的常见语法</text>
+        <text>声明变量 let（先声明 在使用） 和 const
+            * 以前，使用 var 声明变量，解析方式是预解析...</text>
+        <text>* 1 let 声明的变量不存在 预解析！！
+              * 2 let 声明的变量不允许在同一个作用域里重复定义</text>  
+        <text>ES6 引入了块级作用域 即 块内部定义的变量 (使用let定义的变量)，在块的外部不可以访问</text>
+        <text>例如 : {  let flag = 123; }
+              console.log(flag); //这里会报错！！！</text> 
+        <text>包括for（） 括号里的变量在外部也同样不能访问。</text>  
+        <text>对于 let 的规则同样适用于 const ，除此之外，从const还有：
+            * const 声明常量（值不可以改变）且声明必须初始化。
+            * const n = 1;
+            * n = 3; //这里报错！！！</text> 
+      </view>
+
+      <!--  数组的结构赋值-->
+      <view>
+        <text class="v-subtitle">数组的结构赋值</text>
+        <text>let [a,b,c] = [1,2,3];
+              console.log(a,b,c); // 1 2 3
+
+              let [a,b,c] = [,123,];
+              console.log(a,b,c); // undefined 123 undefined
+
+              let [a = 111,b,c] = [,123,];
+              console.log(a,b,c); // 111 123 undefind</text>
+      </view>
+
+      <!--  对象的结构赋值 -->
+      <view>
+        <text class="v-subtitle">对象的结构赋值</text>
+        <text>对象的结构赋值顺序没有影响
+              let {foo,bar} = {foo:'hello', bar : 'hi'}; 
+              console.log(foo,bar) // hello hi</text>
+        <text>对象属性别名
+              let {foo:abc,bar} = {foo:'hello', bar : 'hi'}; 
+              console.log(abc,bar);  // hello hi
+              console.log(foo,bar); //报错
+              如果有了别名，原来的名字就无效了。</text>
+        <text>let {foo:abc = 'hello',bar} = { bar : 'hi'};
+              console.log(abc,bar); //hello hi</text>   
+        <text>下面会将 Math 对象的 cos , sin , random 分别赋值给 cos , sin, random 。
+              let {cos,sin,random} = Math;
+              console.log(cos); //[Function cos]
+              console.log(sin); //[Function sin]
+              console.log(random); //[Function random]</text>
+      </view>
+
+      <!--  字符串结构赋值 -->
+      <view>
+        <text class="v-subtitle">字符串结构赋值</text>
+        <text>let [a,b,c,d,e,f] = "hello";
+              console.log(a,b,c,d,e,f); // h e l l o undefind
+              let {length} = "hello";
+              console.log(length); //5 这里使用的对象的结构赋值 将字符串hello的 length 赋值给变量 length.</text>
+      </view>
+
+      <!--  字符串扩展 -->
+      <view>
+        <text class="v-subtitle">字符串扩展</text>
+        <text>includes()  //判断是否有子串
+              参数1 匹配的子串
+              参数2 从第几个字符开始匹配
+              
+              console.log('Hello world'.includes('world')); //true
+              console.log('Hello world'.includes('world',6)); //true
+              console.log('Hello world'.includes('world',7)); //false</text>
+        <text>startsWith() 判断字符串是否以特定的子串开始
+              endsWith()  判断字符串是否以特定的子串结束
+
+              let url = 'admin/index.php';
+              console.log(url.startsWith('admin')); // true
+              console.log(url.endsWith('php')); // true</text>  
+        <text>模板字符串 使用反引号 ``
+              模板中的内容，通过 ${} 方式填充数据
+              </text>   
+        <image src="./img/img1.png"></image>
+      </view>
+
+      <!--  example start -->
+      <view>
+        <text class="v-subtitle">title</text>
+        <text>content...</text>
+      </view>
+      <!--  example end -->
+    </view>
+  </view>
+</view>
