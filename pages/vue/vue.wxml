@@ -25,13 +25,255 @@
       </view>
 
 
+      <!--  Vue 基本代码 -->
+      <view>
+        <text class="v-subtitle">vue 基本代码</text>
+        <text>当我们导入包vue.js后，我们的浏览器就多了一个Vue 构造函数</text>
+        <text>
+          var vm = new Vue({
+            el : '',  //控制页面的哪个区域
+            data: {}, //存放的 el 中用到的数据
+            methods:{},
+            filters:{}
+          });
+        </text>
+        <text>M : data , V : vue控制的区域 , VM : new Vue() 的实例</text>
+        <text>使用 v-cloak 能够解决 插值表达式{{  }} 的闪烁问题。即设置style [v-cloak]的display : none</text>
+        <text>v-text 和 v-cloak区别 : 
+        [1] 默认的 v-text 是没有闪烁问题的 ； 
+        [2] v-text 会覆盖原本的内容 </text>
+        <text>v-html : 会覆盖原本内容，并以html解析数据</text>
+        <text>v-bind:（绑定属性） 是vue提供的用于绑定属性的一个指令。v-bind:title = "title + 'world' " ， 会解析双引号里的表达式！！！即以title变量的值和字符串world连接后结果显示</text>
+        <text>[v-bind:] 可以被简写为冒号 [:] ,即 :title = "mytitle"</text>
+        <text>v-on: （绑定事件） v-on:click = "show" , 其中show方法会在methods定义。缩写 @</text>
+        <text>methods:{
+          //旧的写法
+          show : function(msg){
+            console.log(msg);
+          }
+          //使用es6新的写法
+          show(msg){
+            console.log(msg);
+          }
+        }</text>
+        <text>注意：在VM实例中，如果要获取data上的数据，或者调用methods的方法，必须通过this.数据属性 或 this.方法，这里的this就是 vm实例对象。</text>
+        <text>vm实例 会监听自己身上的 data 的改变，只要一发生变化，立即同步到页面。程序员只需要关心数据。</text>
+      </view>
 
-      <!--  example start -->
+      <!--  跑马灯 -->
+      <view>
+        <text class="v-subtitle">跑马灯</text>
+        <text>es6新增的箭头函数：内部的 this 和 函数外面的 this一致！！！</text>
+        <text>
+          methods:{
+            lang( ){
+              setInterval(( )=>{
+                var start = this.msg.substring(0, 1);
+                var end = this.msg.substring(1);
+                this.msg = end + start;
+              },500);
+            }
+          }
+        </text>
+        
+      </view>
+
+      <!--  表单数据绑定 -->
+      <view>
+        <text class="v-subtitle">表单数据绑定</text>
+        <text>你可以用 v-model 指令在表单 input、textarea 及 select 元素上创建双向数据绑定。</text>
+        <text>v-model 在内部为不同的输入元素使用不同的 property 并抛出不同的事件：
+              text 和 textarea 元素使用 value property 和 input 事件；
+              checkbox 和 radio 使用 checked property 和 change 事件；
+              select 字段将 value 作为 prop 并将 change 作为事件。</text>
+      </view>
+
+      <!--  v-if v-else v-else-if  v-show-->
+      <view>
+        <text class="v-subtitle">v-if , v-else , v-else-if , v-show</text>
+        <text>content</text>
+      </view>
+
+      <!--  v-for -->
+      <view>
+        <text class="v-subtitle">v-for</text>
+        <text>content</text>
+      </view>
+
+      <!--  计算属性关键词: computed。 -->
+      <view>
+        <text class="v-subtitle">计算属性关键词: computed</text>
+        <text>我们可以使用 methods 来替代 computed，效果上两个都是一样的，但是 computed 是基于它的依赖缓存，只有相关依赖发生改变时才会重新取值。而使用 methods ，在重新渲染的时候，函数总会重新调用执行。</text>
+        <text>可以说使用 computed 性能会更好，但是如果你不希望缓存，你可以使用 methods 属性。</text>
+        <text>computed 属性默认只有 getter ，不过在需要时你也可以提供一个 setter ：</text>
+      </view>
+      <!--  end -->
+
+
+      <!--  Vue.js 监听属性 -->
+      <view>
+        <text class="v-subtitle">Vue.js 监听属性</text>
+        <text>我们可以通过 watch 来响应数据的变化</text>
+        <text>
+          data :{
+            kilometers : 0,
+            meters : 0
+          },
+          watch : {
+               kilometers:function(val) {
+                  this.kilometers = val;
+                  this.meters = this.kilometers * 1000
+               },
+               meters : function (val) {
+                  this.kilometers = val/ 1000;
+                  this.meters = val;
+               }
+            }
+        </text>
+        <text>vm.$watch('counter', function(nval, oval) {
+            alert('计数器值的变化 :' + oval + ' 变为 ' + nval + '!');
+        });</text>
+      </view>
+
+
+      <!--  Vue.js 样式绑定 -->
+      <view>
+        <text class="v-subtitle">Vue.js 样式绑定</text>
+        <text>v-bind:class="{ active: isActive }" , 如果isActive为true，样式为active</text>
+        <text>v-bind:class="{ active: isActive, 'text-danger': hasError }" ， 可以这样设置多个类</text>
+        <text>>v-bind:class="isActive ? 'active' : 'text-danger' " 也可以适用条件运算符</text>
+        <text>当样式有连接符 - 需要加引号 ''</text>
+        <text>也可以直接绑定数据里的一个对象： 
+          v-bind:class="classObject"，classObject是computed的一个属性。
+          computed: {
+            classObject: function () {
+              return {
+                base: true,
+                active: this.isActive && !this.error.value,
+                'text-danger': this.error.value && this.error.type === 'fatal',
+              }
+            }
+        </text>
+        <text>我们可以把一个数组传给 v-bind:class 
+          //html代码
+          v-bind:class="[activeClass, errorClass]" 
+          
+          //js代码
+          data: {
+            activeClass: 'active',
+            errorClass: 'text-danger'
+          }
+
+          //div class 为： active text-danger
+        </text>
+
+        <text>
+          我们还可以使用三元表达式来切换列表中的 class ：
+          v-bind:class="[errorClass ,isActive ? activeClass : '']"
+          //errorClass 是始终存在的，isActive 为 true 时添加 activeClass 类
+
+          //js代码
+          data: {
+            isActive : true,
+            activeClass: 'active',
+            errorClass: 'text-danger'
+          }
+        </text>
+
+        <text>
+          内联样式：
+          1. v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }"
+
+          2. v-bind:style="styleObject"
+          //js
+          data :{
+              styleObject: {
+                color: 'green',
+                fontSize: '30px'
+              }
+          }
+
+          //多个样式
+          3. v-bind:style="[baseStyles, overridingStyles]"
+          //js
+          data : {
+            baseStyles : {样式键值对...},
+            overridingStyles : {样式键值对....}
+          }
+
+        </text>
+      </view>
+      <!-- end -->
+
+
+      <!--  Vue.js 事件处理器 -->
+      <view>
+        <text class="v-subtitle">Vue.js 事件处理器</text>
+        <text>content</text>
+      </view>
+      <!-- end -->
+
+      <!--  Vue.js 表单 -->
+      <view>
+        <text class="v-subtitle">Vue.js 表单</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 组件 -->
+      <view>
+        <text class="v-subtitle">Vue.js 组件</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 自定义指令 -->
+      <view>
+        <text class="v-subtitle">Vue.js 自定义指令</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 路由 -->
+      <view>
+        <text class="v-subtitle">Vue.js 路由</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 过渡和动画 -->
+      <view>
+        <text class="v-subtitle">Vue.js 过渡和动画</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 混入 -->
+      <view>
+        <text class="v-subtitle">Vue.js 混入</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js Vue.js Ajax(axios) -->
+      <view>
+        <text class="v-subtitle">Vue.js Vue.js Ajax(axios)</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js Vue.js Ajax(vue-resource) -->
+      <view>
+        <text class="v-subtitle">Vue.js Vue.js Ajax(vue-resource)</text>
+        <text>content</text>
+      </view>
+
+      <!--  Vue.js 响应接口 -->
+      <view>
+        <text class="v-subtitle">Vue.js 响应接口</text>
+        <text>content</text>
+      </view>
+
+
+      <!--  start -->
       <view>
         <text class="v-subtitle">title</text>
-        <text>content...</text>
+        <text>content</text>
       </view>
-      <!--  example end -->
+      <!-- end -->
     </view>
   </view>
 </view>

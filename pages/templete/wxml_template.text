@@ -4,12 +4,12 @@
       <text>示例</text>
     </view>
     <view class="v-content">
-      <!--  example start -->
+       <!--  start -->
       <view>
         <text class="v-subtitle">title</text>
-        <text>content...</text>
+        <text>content</text>
       </view>
-      <!--  example end -->
+      <!--  end -->
     </view>
   </view>
 </view>
