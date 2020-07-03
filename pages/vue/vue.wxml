@@ -168,12 +168,14 @@
               text 和 textarea 元素使用 value property 和 input 事件；
               checkbox 和 radio 使用 checked property 和 change 事件；
               select 字段将 value 作为 prop 并将 change 作为事件。</text>
+        <text>:disabled="age==25" 在表单元素上禁用，当age = 25时禁用控件。</text>
       </view>
 
       <!--  v-if v-else v-else-if  v-show-->
       <view>
         <text class="v-subtitle">v-if , v-else , v-else-if , v-show</text>
-        <text>content</text>
+        <text>v-if : 有较高的切换性能消耗</text>
+        <text>v-show : 有较高的初始化性能消耗</text>
       </view>
 
       <!--  v-for -->
@@ -187,6 +189,7 @@
           第二个参数：键名
           第三个参数：索引
         </text>
+        <text>也可以使用v-for迭代一个数字， v-for = "count in 10" ，需要注意的是 count的值从1开始。</text>
         <text>为了给 Vue 一个提示，以便它能跟踪每个节点的身份，从而重用和重新排序现有元素，你需要为每项提供一个唯一 key attribute：
           v-for="item in items" v-bind:key="item.id"
         </text>
@@ -199,6 +202,7 @@
           sort()
           reverse()</text>
           <text>变更方法，顾名思义，会变更调用了这些方法的原始数组。相比之下，也有非变更方法，例如 filter()、concat() 和 slice()。它们不会变更原始数组，而总是返回一个新数组。当使用非变更方法时，可以用新数组替换旧数组：</text>
+          <text>注意：当在组件中使用v-for时，key属性时必须的。key标识了此项的唯一身份！！！key的值只能是字符串或数字。key必须使用 v-bind:key形式进行绑定。</text>
       </view>
 
       <!--  计算属性关键词: computed。 -->
@@ -268,6 +272,9 @@
           //div class 为： active text-danger
         </text>
 
+        <text>在数组中嵌套对象 ，使用对象代替三元表达式
+            v-bind:class="[activeClass, {'red' : isActiove}]" </text>
+
         <text>
           我们还可以使用三元表达式来切换列表中的 class ：
           v-bind:class="[errorClass ,isActive ? activeClass : '']"
@@ -303,6 +310,7 @@
           }
 
         </text>
+        <text>样式总结：可以使用一个数组，也可以在数组中嵌套对象，也可以直接使用一个对象。在对象中的属性（类）建议带引号</text>
       </view>
       <!-- end -->
 
@@ -312,7 +320,16 @@
         <text class="v-subtitle">Vue.js 事件处理器</text>
         <text>v-on:click="greet" `greet` 是在下面定义的方法名</text>
         <text>v-on:click="say('hi')" 传递参数 'hi'</text>
-        <text>事件修饰符</text>
+        <text>事件修饰符
+          .stop 阻止冒泡  //  v-click.stop = "btnHandler"
+          .prevent 阻止默认事件 //阻止 a标签 链接的默认跳转行为
+          .capture 添加事件侦听器时使用事件捕获模式(默认是冒泡) 从外到里执行事件
+          .self 只当事件在该元素本身（不是子元素或父元素）触发时触发回调( 捕获 和 冒泡不起作用) ，只负责自己身上的冒泡行为，不负责阻止其他元素的冒泡行为
+          .once 事件只触发一次
+          .passive 
+          使用修饰符时，顺序很重要；相应的代码会以同样的顺序产生。因此，用 v-on:click.prevent.self 会阻止所有的点击，而 v-on:click.self.prevent 只会阻止对元素自身的点击。
+        </text>
+        <text>在vue的事件v-on:click="add(a,b,c,d)"绑定时，如果加了小括号，就可以传参数了。</text>
         <text>按键修饰符</text>
       </view>
       <!-- end -->
@@ -320,7 +337,9 @@
       <!--  Vue.js 表单 -->
       <view>
         <text class="v-subtitle">Vue.js 表单</text>
-        <text>可以用 v-model 指令在表单控件元素上创建双向数据绑定。</text>
+        <text>可以用 v-model 指令在表单控件元素上创建双向数据绑定。只有v-model能实现双向数据绑定！！！！</text>
+        <text>v-model 只能运用到表单元素中。</text>
+        <text>v-bind:只能实现数据的单向绑定 ， 从 M 到 V</text>
         <text>复选框如果是一个为逻辑值，如果是多个则绑定到同一个数组：</text>
         <image src="./image/img2.png"></image>
         <text>修饰符：

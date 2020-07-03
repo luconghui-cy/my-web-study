@@ -28,7 +28,7 @@
   display: block;
   margin: 0rpx 0rpx;
   line-height: 45rpx;
-  border-bottom: 1rpx dashed #ddd;
+  border-bottom: 10rpx solid #ccc;
   text-align: justify;
 }
 

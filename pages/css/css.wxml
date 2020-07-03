@@ -1,2 +1,16 @@
-<!--pages/css/css.wxml-->
-<text>pages/css/css.wxml</text>
+<view class="container">
+  <view class="v-section">
+    <view class="v-title">
+      <text>CSS</text>
+    </view>
+    <view class="v-content">
+       <!--  start -->
+      <view>
+        <text class="v-subtitle">title</text>
+        <text>letter-spacing : 设置中文字符间距</text>
+        <text>word-spacing : 设置英文字符间距</text>
+      </view>
+      <!--  end -->
+    </view>
+  </view>
+</view>
