@@ -146,8 +146,13 @@
 
       <!--  start -->
       <view>
-        <text class="v-subtitle">filter</text>
-        <text>content</text>
+        <text class="v-subtitle">String.prototype.padStart()</text>
+        <text>ES6字符串新方法:填充字符串
+              String.prototype.padStart(maxLength,fillString=’’)  //在头填充
+              String.prototype.padEnd(maxLength,fillString=’’) //在尾填充
+
+              应用场景
+              时钟字符串分钟数前加0</text>
       </view>
       <!--  end -->
 
