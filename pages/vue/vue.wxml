@@ -440,7 +440,71 @@
       <!--  Vue.js 过渡和动画 -->
       <view>
         <text class="v-subtitle">Vue.js 过渡和动画</text>
-        <text>content</text>
+        <text>1.过渡类名
+          // 2组样式定义
+          // 进入 和 离开 [时间段]
+          .v-enter-active, .v-leave-active {
+            transition: opacity .5s;
+          }
+          // 进入之前 和 离开之后  [时间点]
+          .v-enter, .v-leave-to {
+            transform: translateX(100px);
+            opacity: 0;
+          }
+          使用transition将元素包起来 , 如果使用没有名字的 transition,即未设置name的值,默认的前缀 v- , 如果设置name = 'my' ，则前缀 my-
+        </text>
+        <text>javascript 钩子函数定义半场动画
+          //上半场
+          v-on:before-enter="beforeEnter"
+          v-on:enter="enter"
+          v-on:after-enter="afterEnter"
+
+          //下半场
+          v-on:before-leave="beforeLeave"
+          v-on:leave="leave"
+          v-on:after-leave="afterLeave"
+
+          //处理函数
+          methods : {
+            beforeEnter: function (el) {
+              el.style.translate = 'translate(0px,0px)';
+            },
+
+            enter: function (el, done) {
+              el.offsetWidth
+              e1.style.transilate = 'translate(300px,450px)'
+              el.style.transition = 'all 1s ease'
+              done()
+            },
+            afterEnter: function (el) {
+              this.flag = !this.flag;
+            },
+          }
+        </text> 多个组件 transition-group ， 添加属性 tag = 'ul' ！！！
+          transition-group appear= "out-in" tag="ul"
+
+          // 1 设置css样式
+          .v-enter,.v-leave-to{
+            opacity : 0;
+            transform: translateY(100px);
+          }
+
+          // 2 进入离开动画
+          .v-enter-active,.v-leave-active{
+            transition: all 0.8s ease;
+          }
+
+          // 3 删除时离开和进入平滑进行
+          .v-move{
+            transition: all 0.8s ease;
+          }
+          .v-leave-active{
+            position: absolute;
+          }
+
+        <text>
+        
+        </text>
       </view>
 
       <!--  Vue.js 混入 -->
